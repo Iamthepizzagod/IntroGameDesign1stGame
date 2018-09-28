@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - ground
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: rock
+    uniqueID: 3233246457
+    locked: 0
+  - name: backround
+    uniqueID: 739191887
+    locked: 0
+  - name: ground
+    uniqueID: 3754176803
+    locked: 0
+  - name: player
+    uniqueID: 51593915
     locked: 0
