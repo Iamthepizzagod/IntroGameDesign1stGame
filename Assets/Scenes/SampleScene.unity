@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 908043985}
   - component: {fileID: 908043984}
   - component: {fileID: 908043986}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: the_rock_is_cooking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,8 +488,9 @@ GameObject:
   - component: {fileID: 1091410868}
   - component: {fileID: 1091410867}
   - component: {fileID: 1091410866}
-  - component: {fileID: 1091410865}
   - component: {fileID: 1091410864}
+  - component: {fileID: 1091410870}
+  - component: {fileID: 1091410869}
   m_Layer: 8
   m_Name: ground (1)
   m_TagString: Untagged
@@ -529,17 +530,6 @@ EdgeCollider2D:
   - {x: 4.0003033, y: 0.18897772}
   - {x: 4.5865874, y: 0.20393181}
   - {x: 4.84, y: 0}
---- !u!114 &1091410865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1091410863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19c8c231b7255174fa9ca61928a76b87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1091410866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -624,6 +614,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091410869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1091410863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a51283469cc624d9c25a92f694f305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallDelay: 0.5
+--- !u!50 &1091410870
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1091410863}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1114365853
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +808,7 @@ GameObject:
   - component: {fileID: 1172137022}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
