@@ -4,35 +4,41 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour {
 
-    private int playerHealth = 100;
-    public float playerSpeed;
+    public float moveSpeed;
     private Rigidbody2D myRigidBody;
 
     // Use this for initialization
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //Move Right 
+
         if (Input.GetAxisRaw("Horizontal") > 0f)
         {
-            myRigidBody.velocity = new Vector2(playerSpeed, myRigidBody.velocity.y);
+            myRigidBody.velocity = new Vector2(moveSpeed, myRigidBody.velocity.y);
+            transform.localScale = new Vector2(1f, 1f);
 
-
-        }
-        if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            myRigidBody.velocity = new Vector2(playerSpeed*-1, myRigidBody.velocity.y);
+            //Move Left
 
         }
-
-        if (Input.GetAxisRaw("Vertical") > 0f)
+        else if (Input.GetAxisRaw("Horizontal") < 0f)
         {
-            myRigidBody.velocity = new Vector2(myRigidBody.velocity.x, playerSpeed);
+            myRigidBody.velocity = new Vector2(-moveSpeed, myRigidBody.velocity.y);
+            transform.localScale = new Vector2(-1f, 1f);
+        }
+
+        //No sliding 
+        else
+        {
+            myRigidBody.velocity = new Vector2(0f, myRigidBody.velocity.y);
+
+
         }
     }
 }
