@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class playerController : MonoBehaviour {
 
+    [SerializeField]
     public float moveSpeed;
+    [SerializeField]
     public float jumpSpeed;
+
     private Rigidbody2D myRigidBody;
 
     public Transform groundCheck;
@@ -21,7 +26,7 @@ public class playerController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
@@ -52,6 +57,25 @@ public class playerController : MonoBehaviour {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             myRigidBody.velocity = new Vector2(myRigidBody.velocity.x, jumpSpeed);
+        }
+
+        //Run
+        if(Input.GetButton("Run") && Input.GetAxisRaw("Horizontal") > 0f && isGrounded)
+        {
+            myRigidBody.velocity = new Vector2(moveSpeed + 10, myRigidBody.velocity.y);
+        }
+        else if (Input.GetButton("Run") && Input.GetAxisRaw("Horizontal") < 0f && isGrounded)
+        {
+            myRigidBody.velocity = new Vector2(-moveSpeed - 10, myRigidBody.velocity.y);
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "KillPlane")
+        {
+            SceneManager.LoadScene("SampleScene");
         }
     }
 }
