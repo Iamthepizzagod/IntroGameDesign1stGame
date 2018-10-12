@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class playerController : MonoBehaviour {
+public class playerController : MonoBehaviour
+{
 
     [SerializeField]
     public float moveSpeed;
@@ -60,7 +61,7 @@ public class playerController : MonoBehaviour {
         }
 
         //Run
-        if(Input.GetButton("Run") && Input.GetAxisRaw("Horizontal") > 0f && isGrounded)
+        if (Input.GetButton("Run") && Input.GetAxisRaw("Horizontal") > 0f && isGrounded)
         {
             myRigidBody.velocity = new Vector2(moveSpeed + 10, myRigidBody.velocity.y);
         }
@@ -75,9 +76,30 @@ public class playerController : MonoBehaviour {
     {
         if (other.tag == "KillPlane")
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("1st_level");
         }
+
+        else if (other.tag == "EndLevel")
+        {
+            SceneManager.LoadScene("EndScene");
+        }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.tag == "MovingPlatform")
+            transform.parent = other.transform;
+    }
+
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.transform.tag == "MovingPlatform")
+            transform.parent = null;
     }
 }
+
+
 
 
