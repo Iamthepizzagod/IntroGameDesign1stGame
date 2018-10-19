@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class playerController : MonoBehaviour
 {
 
-    [SerializeField]
     public float moveSpeed;
-    [SerializeField]
     public float jumpSpeed;
 
     private Rigidbody2D myRigidBody;
+
+    private Animator myAnim;
 
     public Transform groundCheck;
     public float groundCheckRadius; //Radius of groundcheck
@@ -24,13 +24,15 @@ public class playerController : MonoBehaviour
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        myAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
-
+        myAnim.SetFloat("Walking", Mathf.Abs(myRigidBody.velocity.x));
+        myAnim.SetBool("Grounded", isGrounded);
 
         //Move Right 
 
@@ -69,6 +71,8 @@ public class playerController : MonoBehaviour
         {
             myRigidBody.velocity = new Vector2(-moveSpeed - 10, myRigidBody.velocity.y);
         }
+
+
     }
 
 
@@ -98,6 +102,11 @@ public class playerController : MonoBehaviour
         if (other.transform.tag == "MovingPlatform")
             transform.parent = null;
     }
+
+
+
+
+
 }
 
 
