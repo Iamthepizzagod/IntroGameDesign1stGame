@@ -78,12 +78,7 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "KillPlane")
-        {
-            SceneManager.LoadScene("1st_level");
-        }
-
-        else if (other.tag == "EndLevel")
+        if (other.tag == "EndLevel")
         {
             SceneManager.LoadScene("EndScene");
         }
